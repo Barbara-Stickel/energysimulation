@@ -23,7 +23,7 @@ import os.path as osp
 
 import distutils.sysconfig as sysconfig
 
-import grid_sim_linear_program as gslp
+import gridsim.grid_sim_linear_program as gslp
 
 import pandas as pd
 
@@ -144,19 +144,19 @@ def display_lp_results(lp):
                  co2 * lp.carbon_tax) * lp.cost_of_money
     total_source_cost = capital_cost + fuel_cost
 
-    print """SOURCE: %s
+    print("""SOURCE: %s
   Capacity: %.2f Megawatts
   Generated: %.2f Megawatt-hours
   Emitted: %.2f Tonnes of CO2
   Capital Cost: $%.2f
   Fuel Cost: $%.2f
-  Total Cost: $%.2f""" % (source.name,
+  Total Cost: $%.2f"""%(source.name,
                           capacity,
                           generated,
                           co2,
                           capital_cost,
                           fuel_cost,
-                          total_source_cost)
+                          total_source_cost))
 
     system_cost += total_source_cost
     system_co2 += co2
@@ -171,7 +171,7 @@ def display_lp_results(lp):
         [capacity * storage.storage_nameplate_cost,
          charge_capacity * storage.charge_nameplate_cost,
          discharge_capacity * storage.discharge_nameplate_cost])
-    print """STORAGE: %s
+    print("""STORAGE: %s
   Capacity: %.2f Megawatt-hours
   Maximum Charge Power: %.2f Megawatts
   Maximum Discharge Power: %.2f Megawatts
@@ -179,12 +179,12 @@ def display_lp_results(lp):
                           capacity,
                           charge_capacity,
                           discharge_capacity,
-                          storage_cost)
+                          storage_cost))
     system_cost += storage_cost
     system_co2 += co2
 
-  print 'SYSTEM_COST: $%.2f' % system_cost
-  print 'SYSTEM_CO2: %.2f Tonnes' % system_co2
+  print('SYSTEM_COST: $%.2f' % system_cost)
+  print('SYSTEM_CO2: %.2f Tonnes' % system_co2)
 
 
 def main():

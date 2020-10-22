@@ -43,8 +43,8 @@ import math
 
 import os.path as osp
 
-import grid_sim_linear_program as gslp
-import grid_sim_simple_example as simple
+import gridsim.grid_sim_linear_program as gslp
+import gridsim.grid_sim_simple_example as simple
 
 import pandas as pd
 
@@ -225,7 +225,7 @@ def configure_sources_and_storage(profile_directory,
   lp.add_demands(gslp.GridDemand('%s_DEMAND' % region.upper()))
 
   # Configure dispatchable and non-dispatchable sources.
-  for source_name, source_index in source_dict_index.iteritems():
+  for source_name, source_index in source_dict_index.items():
     dataframe_row = source_dataframe.loc['%s_%d' % (source_name, source_index)]
     is_rps_source = source_name in rps_names
 

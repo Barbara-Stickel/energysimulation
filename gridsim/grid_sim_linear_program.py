@@ -475,6 +475,7 @@ class _GridSourceDispatchableSolver(object):
       # Keep the lights on at all times.  Power_coefficient is usually
       # 1.0, but is -1.0 for GridStorage.sink and discharge_efficiency
       # for GridStorage.source.
+
       lp.conserve_power_constraint[source.grid_region_id][t].set_coefficient(
           var, source.power_coefficient)
 
